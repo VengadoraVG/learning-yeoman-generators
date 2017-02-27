@@ -1,0 +1,17 @@
+# esprima
+
+es para parsear strings de javascript.
+
+    var esprima = require('esprima');
+    var obj = esprima.parse(javascript string);
+
+la sintáxis del código parseado es muy extraña o.O
+
+# escodegen
+
+es para generar javascript a partir de javascript parseado mediante esprima
+
+    var escodegen = require('escodegen');
+    var str = escodegen.generate(obj);
+
+genera una linda cadena de texto que representa el código javascript de la expresión parseada con esprima ^w^

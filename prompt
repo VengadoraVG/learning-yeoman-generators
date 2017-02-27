@@ -1,0 +1,3 @@
+prompt.get(['name', 'color', ...], function (err, value) {
+  value.name // :O
+});

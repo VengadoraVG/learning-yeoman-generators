@@ -1,0 +1,77 @@
+check this out! http://yeoman.io/authoring/
+
+Primero, debes hacer un folder con nombre generator-nombre, dentro de él, irá todo lo que yeoman necesita para scaffoldear o.o
+
+genera el archivo `package.json`, que es un "Node.js module manifest" o.O
+
+    $ npm init
+
+pero no quedó bien o__O, tiene que verse algo así O__o
+
+`lets-yo`
+
+    {
+      "name": "generator-brownie",
+      "version": "0.1.0",
+      "description": "it generates a brownie!",
+      "files": [
+        "app", // yo brownie!
+        "router"
+      ],
+      "author": "vg",
+      "license": "GPL-3.0"
+    }
+
+La estructura de archivos dentro de este folder es muy importante! si creas una estructura algo así:
+
+    generator-nombre/
+        package.json
+        app/
+            index.js
+        foo/
+            index.js
+
+el yeoman usará el generador en `generator-nombre/app/index.js`, cuando uses
+
+    yo nombre
+
+y también usará el generador en `generator-nombre/foo/index.js`, cuando uses
+
+    yo foo
+
+en app/index.js construyes el módulo o.O
+
+    var generators = require('yeoman-generator');
+
+    module.exports = generators.Base.extend({
+      method1 : function () {
+        console.log('where is muh brownie? :(');
+      }, method2 : function ...
+    });
+
+y luego, como ahora sólamente está "lógicamente", debes "linkearlo" con el npm, así que desde la misma carpeta corres:
+
+    $ npm link
+
+va a tardar un montón DX pero cuando termine, ya vas a poder hacer `$yo brownie` :D
+
+ya adentro, querrás crear carpetas y archivos, porque el tutorial es como "y eso es todo :I" lol, bueno... para crear carpetas y archivos, puedes usar nodejs O_O:
+
+`mkdir snippet`
+
+    var fs = require('fs');
+    if (!fs.existsSync(dir)) {
+      fs.mkdirSync(dir);
+    }
+
+`cp snippet`
+
+    fs.createReadStream('origin.file').
+      pipe(fs.createWriteStream('destination.file'));
+
+pero, con yeoman deberías usar o.O
+
+    this.fs.copy(
+      this.templatePath('origin.file'),
+      this.destinationRoot()
+    );
